@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  {% seo %}
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% feed_meta %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav">
+        <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+        <div class="nav-links">
+          <a href="{{ site.baseurl }}/">Projects</a>
+          <a href="{{ site.baseurl }}/CONTRIBUTING.html">Contribute</a>
+          <a href="https://github.com/brt-rj" target="_blank">GitHub</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="container">
+      {{ content }}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {{ site.time | date: '%Y' }} BRT Research. All rights reserved.</p>
+      <p class="footer-links">
+        <a href="https://github.com/brt-rj/brt-view" target="_blank">Repository</a> |
+        <a href="{{ site.baseurl }}/CONTRIBUTING.html">Contributing</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,91 @@
+name: Validate Project
+
+on:
+  pull_request:
+    paths:
+      - 'projects/**'
+      - '_data/projects.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          echo "Checking for required project files..."
+          
+          # Get list of changed project directories
+          CHANGED_PROJECTS=$(git diff --name-only origin/main... | grep '^projects/' | cut -d'/' -f2 | sort -u)
+          
+          for PROJECT in $CHANGED_PROJECTS; do
+            echo "Validating project: $PROJECT"
+            
+            PROJECT_DIR="projects/$PROJECT"
+            
+            # Check for required files
+            if [ ! -f "$PROJECT_DIR/index.md" ]; then
+              echo "❌ Missing index.md in $PROJECT_DIR"
+              exit 1
+            fi
+            
+            echo "✅ $PROJECT has all required files"
+          done
+
+      - name: Validate YAML syntax
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Check projects.yml syntax
+        run: |
+          python -c "import yaml; yaml.safe_load(open('_data/projects.yml'))"
+          echo "✅ projects.yml is valid YAML"
+
+      - name: Validate project metadata
+        run: |
+          python << 'EOF'
+          import yaml
+          
+          with open('_data/projects.yml', 'r') as f:
+              projects = yaml.safe_load(f)
+          
+          required_fields = ['slug', 'name', 'description', 'status']
+          
+          for i, project in enumerate(projects):
+              for field in required_fields:
+                  if field not in project or not project[field]:
+                      print(f"❌ Project {i} missing required field: {field}")
+                      exit(1)
+              
+              # Validate status
+              if project['status'] not in ['active', 'beta', 'archived']:
+                  print(f"❌ Project {project.get('name', i)} has invalid status: {project['status']}")
+                  exit(1)
+          
+          print(f"✅ All {len(projects)} projects have valid metadata")
+          EOF
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Validation Summary
+        run: |
+          echo "✅ All validation checks passed!"
+          echo "- Required files present"
+          echo "- YAML syntax valid"
+          echo "- Project metadata complete"
+          echo "- Jekyll build successful"

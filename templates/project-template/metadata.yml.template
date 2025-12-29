@@ -1,0 +1,7 @@
+slug: project-slug
+name: "Project Name"
+description: "Brief one-line description of the project"
+dashboard_type: ""  # Options: evidence, looker, streamlit, rill, superset, "" (empty for TBD)
+dashboard_url: ""  # URL for iframe embed or external dashboard
+github_url: "https://github.com/brt-rj/your-repo"
+status: active  # Options: active, beta, archived

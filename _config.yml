@@ -1,0 +1,41 @@
+# Site settings
+title: "BRT Dashboard Hub"
+description: "Centralized dashboard hosting platform for BRT research projects"
+baseurl: "/brt-view"
+url: "https://brt-rj.github.io"
+
+# Build settings
+theme: minima
+markdown: kramdown
+highlighter: rouge
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - scripts
+  - templates
+  - README.md
+  - CONTRIBUTING.md

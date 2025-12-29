@@ -1,0 +1,58 @@
+---
+layout: project
+title: "PROJECT_NAME"
+description: "Brief project description (one sentence)"
+dashboard_type: ""  # Options: evidence, looker, streamlit, rill, superset
+dashboard_iframe: false  # Set to true if using iframe embed
+dashboard_url: ""  # URL for iframe or external dashboard
+dashboard_static: false  # Set to true if using static HTML files
+github_url: "https://github.com/brt-rj/YOUR_REPO"
+status: active  # Options: active, beta, archived
+last_updated: ""
+---
+
+# PROJECT_NAME
+
+## Overview
+
+[Provide a comprehensive overview of your project here]
+
+## Key Features
+
+- Feature 1
+- Feature 2
+- Feature 3
+
+## Methodology
+
+[Describe your approach, data sources, and analysis methods]
+
+## Technology Stack
+
+- Technology 1
+- Technology 2
+- Technology 3
+
+## Use Cases
+
+1. **Use Case 1**: Description
+2. **Use Case 2**: Description
+3. **Use Case 3**: Description
+
+## Data Sources
+
+- Source 1: Description
+- Source 2: Description
+
+## Future Development
+
+- Planned feature 1
+- Planned feature 2
+
+## Contact
+
+For questions or collaboration opportunities, please visit our [GitHub repository](https://github.com/brt-rj/YOUR_REPO).
+
+---
+
+*This project is part of the BRT Research initiative focused on sustainability and environmental technology.*

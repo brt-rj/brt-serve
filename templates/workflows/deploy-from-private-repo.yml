@@ -1,0 +1,160 @@
+# Deploy Dashboard from Private Repository
+# 
+# This workflow template can be used in your PRIVATE project repository
+# to automatically push dashboard artifacts to the public brt-view repository.
+#
+# SETUP INSTRUCTIONS:
+# 1. Create a fine-grained Personal Access Token (PAT) with write access to brt-rj/brt-view
+# 2. Add the PAT as a secret named 'BRT_VIEW_PAT' in your private repository
+# 3. Copy this file to .github/workflows/deploy-dashboard.yml in your repo
+# 4. Update PROJECT_SLUG below to match your project
+# 5. Customize the build steps for your dashboard type
+
+name: Deploy Dashboard to brt-view
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dashboard/**'
+      - 'PROJECT_DETAILS.md'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout private repository
+        uses: actions/checkout@v4
+      
+      ###############################################
+      # CUSTOMIZE THIS SECTION FOR YOUR DASHBOARD TYPE
+      ###############################################
+      
+      - name: Build Dashboard
+        run: |
+          echo "Building dashboard..."
+          
+          # UNCOMMENT AND CUSTOMIZE BASED ON YOUR DASHBOARD TYPE:
+          
+          # For Streamlit:
+          # pip install streamlit
+          # streamlit run app.py --export static --output dashboard/build
+          
+          # For Evidence:
+          # npm install
+          # npm run build
+          # mkdir -p dashboard/build
+          # cp -r build/* dashboard/build/
+          
+          # For Node.js based dashboards:
+          # npm install
+          # npm run build
+          
+          # For Python-based static export:
+          # pip install -r requirements.txt
+          # python build_dashboard.py
+          
+          echo "Build completed (customize this step for your project)"
+      
+      ###############################################
+      # PROJECT CONFIGURATION
+      ###############################################
+      
+      - name: Configure deployment
+        id: config
+        run: |
+          # REQUIRED: Set your project slug (must match _data/projects.yml)
+          echo "PROJECT_SLUG=your-project-slug" >> $GITHUB_ENV
+          
+          # Optional: Set if your dashboard files are in a specific directory
+          echo "DASHBOARD_SOURCE=dashboard/build" >> $GITHUB_ENV
+      
+      ###############################################
+      # DEPLOYMENT PROCESS (Usually no changes needed)
+      ###############################################
+      
+      - name: Prepare deployment artifacts
+        run: |
+          mkdir -p deploy
+          
+          # Copy dashboard files if they exist
+          if [ -d "${{ env.DASHBOARD_SOURCE }}" ]; then
+            echo "Copying dashboard files from ${{ env.DASHBOARD_SOURCE }}"
+            cp -r ${{ env.DASHBOARD_SOURCE }}/* deploy/
+          else
+            echo "Warning: Dashboard source directory not found: ${{ env.DASHBOARD_SOURCE }}"
+            echo "Skipping dashboard file copy (may be using iframe embed)"
+          fi
+          
+          # Copy project details if it exists
+          if [ -f "PROJECT_DETAILS.md" ]; then
+            cp PROJECT_DETAILS.md deploy/
+          else
+            echo "Warning: PROJECT_DETAILS.md not found"
+          fi
+          
+          # Create update timestamp
+          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > deploy/last_updated.txt
+      
+      - name: Clone brt-view repository
+        env:
+          GH_TOKEN: ${{ secrets.BRT_VIEW_PAT }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "Error: BRT_VIEW_PAT secret not found"
+            echo "Please add your Personal Access Token as a secret named 'BRT_VIEW_PAT'"
+            exit 1
+          fi
+          
+          git config --global user.name "Dashboard Deploy Bot"
+          git config --global user.email "dashboard-bot@brt-rj.github.io"
+          
+          git clone https://x-access-token:${GH_TOKEN}@github.com/brt-rj/brt-view.git
+      
+      - name: Update project in brt-view
+        run: |
+          PROJECT_DIR="brt-view/projects/${{ env.PROJECT_SLUG }}"
+          
+          echo "Updating project at: $PROJECT_DIR"
+          
+          # Create project directory if it doesn't exist
+          mkdir -p "$PROJECT_DIR"
+          
+          # Copy dashboard files (only if deploy directory has files)
+          if [ "$(ls -A deploy/)" ]; then
+            echo "Copying deployment artifacts to $PROJECT_DIR"
+            cp -r deploy/* "$PROJECT_DIR/" || true
+          else
+            echo "No deployment artifacts to copy"
+          fi
+          
+          echo "Project update prepared"
+      
+      - name: Commit and push changes
+        env:
+          GH_TOKEN: ${{ secrets.BRT_VIEW_PAT }}
+        run: |
+          cd brt-view
+          
+          # Add all changes in the project directory
+          git add projects/${{ env.PROJECT_SLUG }}/
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes detected - dashboard is already up to date"
+            exit 0
+          fi
+          
+          # Commit and push
+          COMMIT_MSG="Update ${{ env.PROJECT_SLUG }} dashboard [automated]
+
+          Triggered by: ${{ github.event.head_commit.message }}
+          Commit: ${{ github.sha }}
+          Repository: ${{ github.repository }}"
+          
+          git commit -m "$COMMIT_MSG"
+          git push https://x-access-token:${GH_TOKEN}@github.com/brt-rj/brt-view.git main
+          
+          echo "✅ Dashboard successfully deployed to brt-view!"
+          echo "Changes will be live at https://brt-rj.github.io/brt-view/projects/${{ env.PROJECT_SLUG }}/ after GitHub Pages rebuilds (usually 2-3 minutes)"
