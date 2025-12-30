@@ -1,0 +1,23 @@
+<svg width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scope2Emission: Carbon tracking with charts and measurement -->
+  <rect width="1200" height="400" fill="#1A1C18"/>
+  
+  <!-- Bar chart visualization -->
+  <rect x="100" y="250" width="80" height="100" fill="#E1AD01"/>
+  <rect x="200" y="180" width="80" height="170" fill="none" stroke="#F4F3EF" stroke-width="10"/>
+  <rect x="300" y="210" width="80" height="140" fill="#E1AD01"/>
+  <rect x="400" y="150" width="80" height="200" fill="none" stroke="#E1AD01" stroke-width="12"/>
+  <rect x="500" y="200" width="80" height="150" fill="#F4F3EF"/>
+  
+  <!-- Emission waveform -->
+  <polyline points="650,300 700,250 750,280 800,200 850,240 900,180 950,220 1000,150 1050,200 1100,180" 
+            fill="none" stroke="#E1AD01" stroke-width="14"/>
+  
+  <!-- Baseline -->
+  <line x1="50" y1="350" x2="600" y2="350" stroke="#F4F3EF" stroke-width="6"/>
+  <line x1="650" y1="300" x2="1150" y2="300" stroke="#F4F3EF" stroke-width="4" opacity="0.5"/>
+  
+  <!-- Measurement indicators -->
+  <circle cx="800" cy="200" r="25" fill="#E1AD01"/>
+  <circle cx="1000" cy="150" r="30" fill="none" stroke="#F4F3EF" stroke-width="10"/>
+</svg>

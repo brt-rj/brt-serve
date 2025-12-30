@@ -1,0 +1,33 @@
+<svg width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- GreenOps-Sidecar: DevOps/sustainability with pipeline flow -->
+  <rect width="1200" height="400" fill="#1A1C18"/>
+  
+  <!-- Pipeline stages -->
+  <rect x="50" y="150" width="150" height="100" fill="#E1AD01" stroke="#F4F3EF" stroke-width="10"/>
+  <polygon points="220,200 260,180 260,220" fill="#F4F3EF"/>
+  
+  <rect x="280" y="150" width="150" height="100" fill="none" stroke="#E1AD01" stroke-width="12"/>
+  <polygon points="450,200 490,180 490,220" fill="#E1AD01"/>
+  
+  <rect x="510" y="150" width="150" height="100" fill="#F4F3EF"/>
+  <polygon points="680,200 720,180 720,220" fill="#E1AD01"/>
+  
+  <rect x="740" y="150" width="150" height="100" fill="#E1AD01"/>
+  <polygon points="910,200 950,180 950,220" fill="#F4F3EF"/>
+  
+  <rect x="970" y="150" width="180" height="100" fill="none" stroke="#F4F3EF" stroke-width="10"/>
+  
+  <!-- Sidecar indicators -->
+  <circle cx="125" cy="80" r="35" fill="none" stroke="#E1AD01" stroke-width="10"/>
+  <circle cx="355" cy="320" r="35" fill="#E1AD01"/>
+  <circle cx="585" cy="80" r="35" fill="none" stroke="#F4F3EF" stroke-width="10"/>
+  <circle cx="815" cy="320" r="35" fill="#F4F3EF"/>
+  <circle cx="1060" cy="80" r="35" fill="none" stroke="#E1AD01" stroke-width="10"/>
+  
+  <!-- Connection lines -->
+  <line x1="125" y1="115" x2="125" y2="150" stroke="#E1AD01" stroke-width="6"/>
+  <line x1="355" y1="250" x2="355" y2="285" stroke="#E1AD01" stroke-width="6"/>
+  <line x1="585" y1="115" x2="585" y2="150" stroke="#F4F3EF" stroke-width="6"/>
+  <line x1="815" y1="250" x2="815" y2="285" stroke="#F4F3EF" stroke-width="6"/>
+  <line x1="1060" y1="115" x2="1060" y2="150" stroke="#E1AD01" stroke-width="6"/>
+</svg>

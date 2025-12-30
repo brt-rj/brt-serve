@@ -1,0 +1,24 @@
+<svg width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Con-Eco: Construction/Economy with building blocks -->
+  <rect width="1200" height="400" fill="#1A1C18"/>
+  
+  <!-- Stacked building blocks -->
+  <rect x="80" y="250" width="150" height="100" fill="#E1AD01" stroke="#F4F3EF" stroke-width="10"/>
+  <rect x="120" y="170" width="150" height="80" fill="none" stroke="#E1AD01" stroke-width="12"/>
+  <rect x="160" y="100" width="150" height="70" fill="#F4F3EF"/>
+  
+  <!-- Structural framework -->
+  <rect x="400" y="80" width="120" height="270" fill="none" stroke="#E1AD01" stroke-width="14"/>
+  <rect x="430" y="110" width="60" height="100" fill="#E1AD01"/>
+  <rect x="430" y="230" width="60" height="100" fill="none" stroke="#F4F3EF" stroke-width="10"/>
+  
+  <!-- Modular blocks -->
+  <rect x="600" y="200" width="100" height="100" fill="#E1AD01"/>
+  <rect x="720" y="200" width="100" height="100" fill="none" stroke="#F4F3EF" stroke-width="10"/>
+  <rect x="840" y="200" width="100" height="100" fill="#E1AD01"/>
+  <rect x="660" y="100" width="100" height="80" fill="none" stroke="#E1AD01" stroke-width="12"/>
+  <rect x="780" y="100" width="100" height="80" fill="#F4F3EF"/>
+  
+  <!-- Foundation line -->
+  <line x1="50" y1="350" x2="1000" y2="350" stroke="#F4F3EF" stroke-width="8"/>
+</svg>

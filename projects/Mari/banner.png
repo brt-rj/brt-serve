@@ -1,0 +1,17 @@
+<svg width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Mari: Flowing organic shapes with geometric balance -->
+  <rect width="1200" height="400" fill="#1A1C18"/>
+  
+  <!-- Flowing wave-like shapes -->
+  <path d="M 0,200 Q 150,100 300,200 T 600,200" fill="none" stroke="#E1AD01" stroke-width="15"/>
+  <path d="M 0,250 Q 200,150 400,250 T 800,250" fill="none" stroke="#F4F3EF" stroke-width="12"/>
+  <path d="M 400,100 Q 600,50 800,100 T 1200,100" fill="none" stroke="#E1AD01" stroke-width="14"/>
+  <path d="M 200,300 Q 500,250 800,300 T 1200,300" fill="none" stroke="#F4F3EF" stroke-width="10"/>
+  
+  <!-- Geometric anchor points -->
+  <circle cx="300" cy="200" r="40" fill="#E1AD01"/>
+  <circle cx="600" cy="200" r="35" fill="#F4F3EF"/>
+  <rect x="750" y="65" width="80" height="70" fill="#E1AD01" stroke="#F4F3EF" stroke-width="8"/>
+  <circle cx="400" cy="250" r="30" fill="none" stroke="#E1AD01" stroke-width="10"/>
+  <circle cx="800" cy="300" r="38" fill="#E1AD01"/>
+</svg>

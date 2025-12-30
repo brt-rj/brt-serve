@@ -1,0 +1,30 @@
+<svg width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- RAP-Scout: Radar/scanning theme with radiating patterns -->
+  <rect width="1200" height="400" fill="#1A1C18"/>
+  
+  <!-- Central radar point -->
+  <circle cx="600" cy="200" r="30" fill="#E1AD01"/>
+  
+  <!-- Radiating scanning arcs -->
+  <circle cx="600" cy="200" r="80" fill="none" stroke="#F4F3EF" stroke-width="10"/>
+  <circle cx="600" cy="200" r="130" fill="none" stroke="#E1AD01" stroke-width="8"/>
+  <circle cx="600" cy="200" r="180" fill="none" stroke="#F4F3EF" stroke-width="6"/>
+  
+  <!-- Scan line sweeps -->
+  <line x1="600" y1="200" x2="780" y2="200" stroke="#E1AD01" stroke-width="12"/>
+  <line x1="600" y1="200" x2="708" y2="92" stroke="#E1AD01" stroke-width="10" opacity="0.7"/>
+  <line x1="600" y1="200" x2="492" y2="92" stroke="#F4F3EF" stroke-width="10" opacity="0.7"/>
+  
+  <!-- Target markers -->
+  <rect x="750" y="170" width="40" height="60" fill="#E1AD01"/>
+  <circle cx="480" cy="110" r="25" fill="#F4F3EF"/>
+  <rect x="680" y="100" width="35" height="35" fill="none" stroke="#E1AD01" stroke-width="8"/>
+  <circle cx="520" cy="290" r="20" fill="none" stroke="#F4F3EF" stroke-width="8"/>
+  <rect x="730" y="250" width="30" height="30" fill="#E1AD01"/>
+  
+  <!-- Corner grid markers -->
+  <line x1="100" y1="100" x2="200" y2="100" stroke="#F4F3EF" stroke-width="6"/>
+  <line x1="100" y1="100" x2="100" y2="200" stroke="#F4F3EF" stroke-width="6"/>
+  <line x1="1000" y1="300" x2="1100" y2="300" stroke="#E1AD01" stroke-width="6"/>
+  <line x1="1100" y1="200" x2="1100" y2="300" stroke="#E1AD01" stroke-width="6"/>
+</svg>
