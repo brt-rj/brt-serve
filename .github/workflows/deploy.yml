@@ -42,31 +42,45 @@ jobs:
           echo "Listing projects directory:"
           ls -la projects/
           
-          # Only render no-flab-brief which has actual data and dashboard content
-          # Other projects use static index.md files with placeholders
-          if [ -d "projects/no-flab-brief" ]; then
-            echo "Found no-flab-brief directory"
-            echo "Contents:"
-            ls -la projects/no-flab-brief/
+          # Render all Quarto projects (including placeholders)
+          for project_dir in projects/*/; do
+            project_name=$(basename "$project_dir")
             
-            echo "Rendering no-flab-brief with Quarto..."
-            cd projects/no-flab-brief
-            quarto render . --to html
-            cd ../..
-            
-            echo "Render complete. Checking output:"
-            ls -la projects/no-flab-brief/build/ || echo "Build directory not found"
-          else
-            echo "ERROR: no-flab-brief directory not found"
-            exit 1
-          fi
+            # Check if project has Quarto config
+            if [ -f "$project_dir/_quarto.yml" ]; then
+              echo "========================================="
+              echo "Rendering project: $project_name"
+              echo "========================================="
+              
+              cd "$project_dir"
+              quarto render . --to html
+              cd ../..
+              
+              echo "Render complete for $project_name"
+              if [ -d "$project_dir/build/" ]; then
+                echo "Build output found:"
+                ls -la "$project_dir/build/"
+              else
+                echo "WARNING: Build directory not found for $project_name"
+              fi
+            else
+              echo "Skipping $project_name (no _quarto.yml found)"
+            fi
+          done
+          
+          echo "========================================="
+          echo "All Quarto projects rendered successfully"
+          echo "========================================="
 
       - name: Create Index Redirects for Quarto Projects
         run: |
-          # Only create redirect for no-flab-brief
-          if [ -f "projects/no-flab-brief/build/index.html" ]; then
-            echo "Creating redirect for no-flab-brief..."
-            cat > "projects/no-flab-brief/index.html" << 'EOF'
+          # Create redirects for all rendered Quarto projects
+          for project_dir in projects/*/; do
+            project_name=$(basename "$project_dir")
+            
+            if [ -f "${project_dir}build/index.html" ]; then
+              echo "Creating redirect for $project_name..."
+              cat > "${project_dir}index.html" << 'EOF'
           <!DOCTYPE html>
           <html lang="en">
           <head>
@@ -83,10 +97,13 @@ jobs:
           </body>
           </html>
           EOF
-          else
-            echo "ERROR: Build output not found for no-flab-brief"
-            exit 1
-          fi
+              echo "✓ Redirect created for $project_name"
+            else
+              echo "⚠ Skipping redirect for $project_name (no build output found)"
+            fi
+          done
+          
+          echo "Redirect creation complete"
 
       - name: Setup Pages
         id: pages
