@@ -1,1 +1,8 @@
----\ntitle: Placeholder\nformat: html\n---\n\n# Dashboard Coming Soon
+---
+title: "Maritime Engine"
+format: html
+---
+
+# Dashboard Coming Soon
+
+This dashboard is currently under development.
