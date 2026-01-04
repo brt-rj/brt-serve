@@ -49,7 +49,12 @@ jobs:
           for project in "${projects[@]}"; do
             if [ -d "projects/$project" ]; then
               echo "Rendering $project..."
-              quarto render "projects/$project" --to html
+              # Add timeout of 5 minutes per project to prevent hanging
+              timeout 5m quarto render "projects/$project" --to html || {
+                echo "ERROR: Failed to render $project (timeout or error)"
+                # Continue with other projects even if one fails
+                continue
+              }
             else
               echo "Warning: Directory projects/$project not found, skipping."
             fi
