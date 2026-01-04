@@ -1,0 +1,25 @@
+/* Basic styles for No-Flab Brief Dashboard */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+h1.title {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.itables table {
+    width: 100% !important;
+    border-collapse: collapse;
+}
+
+/* Ensure links in tables are visible */
+table a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+table a:hover {
+    text-decoration: underline;
+}

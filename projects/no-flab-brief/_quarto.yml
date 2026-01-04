@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: build # Deployment expects build artifact in 'serve/build'
+
+website:
+  title: "No-Flab Brief"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+    right:
+      - icon: github
+        href: https://github.com/brt-rj/no-flab-brief
+        aria-label: GitHub
+  
+  # Base URL for GitHub Pages project site deployment
+  # Adjust this if deploying to a different path
+  site-url: /brt-serve/projects/no-flab-brief
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    code-fold: true # Allow hiding/showing code blocks
+    code-tools: true # Enable code tools menu
