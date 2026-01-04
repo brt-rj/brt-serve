@@ -1,7 +1,7 @@
 # Site settings
 title: "Barati Serve Hub"
 description: "Centralized dashboard hosting platform for BRT research projects"
-baseurl: "/brt-view"
+baseurl: "/brt-serve"
 url: "https://brt-rj.github.io"
 
 # Build settings
@@ -28,6 +28,10 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+
+# Include build directories and HTML files
+include:
+  - projects/*/build
 
 # Exclude from processing
 exclude:
