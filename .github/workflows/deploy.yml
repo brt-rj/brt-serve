@@ -28,6 +28,32 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
 
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Install Python Dependencies
+        run: |
+          pip install jupyter matplotlib pandas plotly great_tables duckdb
+
+      - name: Render Quarto Dashboards
+        run: |
+          projects=(
+            "Mari"
+            "Scope2Emission"
+            "Con-Eco"
+            "NVCM"
+            "OpenSustain-AI-Engine"
+            "RAP-Scout"
+          )
+          for project in "${projects[@]}"; do
+            if [ -d "projects/$project" ]; then
+              echo "Rendering $project..."
+              quarto render "projects/$project" --to html
+            else
+              echo "Warning: Directory projects/$project not found, skipping."
+            fi
+          done
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4

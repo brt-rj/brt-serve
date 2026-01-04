@@ -1,95 +1,98 @@
-- slug: no-flab-brief
-  name: "No Flab Brief"
-  description: "Concise, fact-checked news aggregation and analysis platform"
-  dashboard_type: observable
-  dashboard_url: ""
-  github_url: "https://github.com/brt-rj/no-flab-brief"
-  status: active
-
-- slug: sub-interceptor
-  name: "Sub-Interceptor"
-  description: "Sustainable submarine cable monitoring and interception system"
-  dashboard_type: ""
-  dashboard_url: ""
-  github_url: "https://github.com/brt-rj/Sub-Interceptor"
-  status: active
-
-- slug: mari
-  name: "Mari"
+- slug: Mari
+  name: "Maritime Engine"
   description: "Maritime resource intelligence and tracking platform"
-  dashboard_type: observable
+  dashboard_type: quarto
   dashboard_url: ""
   github_url: "https://github.com/brt-rj/Mari"
   status: active
+  tech_stack: "Python, Plotly, Mapbox"
 
-- slug: scope2emission
-  name: "Scope2Emission"
+- slug: Scope2Emission
+  name: "Scope 2 Hub"
   description: "Scope 2 emissions tracking and analysis tool"
-  dashboard_type: evidence
+  dashboard_type: quarto
   dashboard_url: ""
   github_url: "https://github.com/brt-rj/Scope2Emission"
   status: active
+  tech_stack: "Pandas, Static Charts"
 
-- slug: con-eco
-  name: "Con-Eco"
+- slug: Con-Eco
+  name: "Construction Econ"
   description: "Construction ecology and sustainability assessment"
-  dashboard_type: evidence
+  dashboard_type: quarto
   dashboard_url: ""
   github_url: "https://github.com/brt-rj/Con-Eco"
   status: active
+  tech_stack: "DuckDB"
 
-- slug: nvcm
-  name: "NVCM"
+- slug: NVCM
+  name: "Nature VCM"
   description: "Natural Voluntary Carbon Market analysis platform"
-  dashboard_type: evidence
+  dashboard_type: quarto
   dashboard_url: ""
   github_url: "https://github.com/brt-rj/NVCM"
   status: active
+  tech_stack: "Matplotlib, Satellite Imagery"
 
-- slug: rap-scout
-  name: "RAP-Scout"
-  description: "Renewable energy project assessment and scouting tool"
-  dashboard_type: evidence
-  dashboard_url: ""
-  github_url: "https://github.com/brt-rj/RAP-Scout"
-  status: active
-
-- slug: greenops-sidecar
-  name: "GreenOps-Sidecar"
-  description: "Green operations monitoring and optimization sidecar"
-  dashboard_type: ""
+- slug: GreenOps-Sidecar
+  name: "EcoStream"
+  description: "Platform Metrics and Global Emissions Saved"
+  dashboard_type: looker
   dashboard_url: ""
   github_url: "https://github.com/brt-rj/GreenOps-Sidecar"
   status: active
+  tech_stack: "Postgres, Looker Studio"
 
-- slug: hypecheck
-  name: "HypeCheck"
-  description: "Technology hype cycle validation and analysis"
-  dashboard_type: looker
-  dashboard_url: ""
-  github_url: "https://github.com/brt-rj/HypeCheck"
-  status: active
-
-- slug: unified-ecorisk-engine
-  name: "Unified EcoRisk Engine"
-  description: "Comprehensive ecological risk assessment platform"
-  dashboard_type: ""
-  dashboard_url: ""
-  github_url: "https://github.com/brt-rj/Unified-EcoRisk-Engine"
-  status: active
-
-- slug: opensustain-ai-engine
-  name: "OpenSustain AI Engine"
+- slug: OpenSustain-AI-Engine
+  name: "OpenSustain AI"
   description: "Open-source AI-powered sustainability analysis engine"
-  dashboard_type: evidence
+  dashboard_type: quarto
   dashboard_url: ""
   github_url: "https://github.com/brt-rj/OpenSustain-AI-Engine"
   status: active
+  tech_stack: "AI Agent, Markdown"
 
-- slug: governance-sidecar
-  name: "Governance Sidecar"
-  description: "Governance Monitoring and Sidecar"
-  dashboard_type: ""
+- slug: HypeCheck
+  name: "HypeCheck"
+  description: "Technology hype cycle validation and analysis"
+  dashboard_type: streamlit
   dashboard_url: ""
-  github_url: "https://github.com/brt-rj/Governance-Sidecar/"
+  github_url: "https://github.com/brt-rj/HypeCheck"
   status: active
+  tech_stack: "Streamlit, Looker"
+
+- slug: RAP-Scout
+  name: "MS-RAP"
+  description: "Renewable energy project assessment and scouting tool"
+  dashboard_type: quarto
+  dashboard_url: ""
+  github_url: "https://github.com/brt-rj/RAP-Scout"
+  status: active
+  tech_stack: "great_tables, Python"
+
+- slug: no-flab-brief
+  name: "No Flab Brief"
+  description: "Concise, fact-checked news aggregation and analysis platform"
+  dashboard_type: streamlit
+  dashboard_url: ""
+  github_url: "https://github.com/brt-rj/no-flab-brief"
+  status: active
+  tech_stack: "Streamlit, User Input"
+
+- slug: Sub-Interceptor
+  name: "SaaS Simulator"
+  description: "High-Velocity Streaming Simulator"
+  dashboard_type: looker
+  dashboard_url: ""
+  github_url: "https://github.com/brt-rj/Sub-Interceptor"
+  status: active
+  tech_stack: "BigQuery, Looker Studio"
+
+- slug: Governance-Sidecar
+  name: "Governance"
+  description: "Governance Monitoring and Sidecar"
+  dashboard_type: streamlit
+  dashboard_url: ""
+  github_url: "https://github.com/brt-rj/Governance-Sidecar"
+  status: active
+  tech_stack: "Streamlit, Admin Actions"
