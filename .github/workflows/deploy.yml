@@ -37,44 +37,22 @@ jobs:
 
       - name: Render Quarto Dashboards
         run: |
-          projects=(
-            "Mari"
-            "Scope2Emission"
-            "Con-Eco"
-            "NVCM"
-            "OpenSustain-AI-Engine"
-            "RAP-Scout"
-            "no-flab-brief"
-          )
-          for project in "${projects[@]}"; do
-            if [ -d "projects/$project" ]; then
-              echo "Rendering $project..."
-              # Add timeout of 5 minutes per project to prevent hanging
-              timeout 5m quarto render "projects/$project" --to html || {
-                echo "ERROR: Failed to render $project (timeout or error)"
-                # Continue with other projects even if one fails
-                continue
-              }
-            else
-              echo "Warning: Directory projects/$project not found, skipping."
-            fi
-          done
+          # Only render no-flab-brief which has actual data and dashboard content
+          # Other projects use static index.md files with placeholders
+          if [ -d "projects/no-flab-brief" ]; then
+            echo "Rendering no-flab-brief..."
+            quarto render "projects/no-flab-brief" --to html
+          else
+            echo "ERROR: no-flab-brief directory not found"
+            exit 1
+          fi
 
       - name: Create Index Redirects for Quarto Projects
         run: |
-          projects=(
-            "Mari"
-            "Scope2Emission"
-            "Con-Eco"
-            "NVCM"
-            "OpenSustain-AI-Engine"
-            "RAP-Scout"
-            "no-flab-brief"
-          )
-          for project in "${projects[@]}"; do
-            if [ -f "projects/$project/build/index.html" ]; then
-              echo "Creating redirect for $project..."
-              cat > "projects/$project/index.html" << 'EOF'
+          # Only create redirect for no-flab-brief
+          if [ -f "projects/no-flab-brief/build/index.html" ]; then
+            echo "Creating redirect for no-flab-brief..."
+            cat > "projects/no-flab-brief/index.html" << 'EOF'
           <!DOCTYPE html>
           <html lang="en">
           <head>
@@ -91,10 +69,10 @@ jobs:
           </body>
           </html>
           EOF
-            else
-              echo "Warning: Build output not found for $project, skipping redirect creation."
-            fi
-          done
+          else
+            echo "ERROR: Build output not found for no-flab-brief"
+            exit 1
+          fi
 
       - name: Setup Pages
         id: pages
