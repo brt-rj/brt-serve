@@ -44,6 +44,7 @@ jobs:
             "NVCM"
             "OpenSustain-AI-Engine"
             "RAP-Scout"
+            "no-flab-brief"
           )
           for project in "${projects[@]}"; do
             if [ -d "projects/$project" ]; then

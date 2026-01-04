@@ -73,11 +73,11 @@
 - slug: no-flab-brief
   name: "No Flab Brief"
   description: "Concise, fact-checked news aggregation and analysis platform"
-  dashboard_type: streamlit
+  dashboard_type: quarto
   dashboard_url: ""
   github_url: "https://github.com/brt-rj/no-flab-brief"
   status: active
-  tech_stack: "Streamlit, User Input"
+  tech_stack: "Quarto, Python"
 
 - slug: Sub-Interceptor
   name: "SaaS Simulator"
